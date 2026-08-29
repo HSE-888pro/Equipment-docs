@@ -2,35 +2,361 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Документация по оборудованию</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация по оборудованию | HSE-888pro</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .doc-link { display: block; padding: 15px; margin: 10px 0;
-                    background: #f0f0f0; text-decoration: none;
-                    color: #0366d6; border-radius: 5px; }
-        .doc-link:hover { background: #e0e0e0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        /* Контекстное меню */
+        .nav-menu {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .menu-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+            color: #495057;
+            text-align: left;
+        }
+
+        .menu-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .menu-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Контент секции */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            animation: fadeIn 0.3s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .doc-list {
+            list-style: none;
+        }
+
+        .doc-item {
+            margin-bottom: 15px;
+        }
+
+        .doc-link {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .doc-link:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .doc-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .doc-info {
+            flex: 1;
+        }
+
+        .doc-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .doc-desc {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .doc-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-items {
+                flex-direction: column;
+            }
+            .menu-btn {
+                min-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>📚 Документация по оборудованию</h1>
-    <p>Паспорта и инструкции для оборудования</p>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>📚 Документация по оборудованию</h1>
+            <p>Паспорта, инструкции и руководства по эксплуатации</p>
+        </div>
 
-    <h2>📄 Документы:</h2>
+        <!-- Контекстное меню -->
+        <div class="nav-menu">
+            <div class="menu-title"> Категории документов</div>
+            <div class="menu-items">
+                <button class="menu-btn active" onclick="showSection('all')">
+                    📋 Все документы
+                </button>
+                <button class="menu-btn" onclick="showSection('instrukcii')">
+                    ⚙️ Инструкции по ОТ и ПБ
+                </button>
+                <button class="menu-btn" onclick="showSection('pasporta')">
+                    🔧 Паспорта оборудования
+                </button>
+                <button class="menu-btn" onclick="showSection('checklist')">
+                    ✅ Чек-листы и риски
+                </button>
+            </div>
+        </div>
 
-    <a href="Dopolnenie%20k%20chek-listu%20PK.pdf" class="doc-link" target="_blank">
-        📋 Дополнение к чек-листу пусковой комиссии
-    </a>
+        <!-- Все документы -->
+        <div id="all" class="content-section active">
+            <h2 class="section-title">📄 Все документы</h2>
+            <ul class="doc-list">
+                <li class="doc-item">
+                    <a href="otbr-39-2026-instrukciya-rotor.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">📜</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Инструкция по ОТ и ПБ — ротор</div>
+                            <div class="doc-desc">МОТБР 39-2026: Эксплуатация и монтаж гидравлического/механического ротора</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+                <li class="doc-item">
+                    <a href="vertlyug-ekspluatacionnyj.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">🔧</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Вертлюг эксплуатационный</div>
+                            <div class="doc-desc">Паспорт и руководство по эксплуатации ВЭ-80Р1 №108</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+                <li class="doc-item">
+                    <a href="Dopolnenie%20k%20chek-listu%20PK.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">✅</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Дополнение к чек-листу ПК</div>
+                            <div class="doc-desc">Проверка параметров при пусконаладке</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+                <li class="doc-item">
+                    <a href="Tipovye%20riski%20pri%20rabotah%20s%20VBT.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">⚠️</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Типовые риски при работах с ВБТ</div>
+                            <div class="doc-desc">Справочник по технике безопасности</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-    <a href="Tipovye%20riski%20pri%20rabotah%20s%20VBT.pdf" class="doc-link" target="_blank">
-        ️ Типовые риски при работах с ВБТ
-    </a>
+        <!-- Инструкции -->
+        <div id="instrukcii" class="content-section">
+            <h2 class="section-title">⚙️ Инструкции по охране труда и промышленной безопасности</h2>
+            <ul class="doc-list">
+                <li class="doc-item">
+                    <a href="otbr-39-2026-instrukciya-rotor.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">📜</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Инструкция МОТБР 39-2026</div>
+                            <div class="doc-desc">По эксплуатации и монтажу гидравлического, механического ротора при бурении, фрезеровании и цементировании скважин</div>
+                        </div>
+                        <span class="doc-badge">НОВЫЙ</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-    <a href="vertlyug-ekspluatacionnyj.pdf" class="doc-link" target="_blank">
-        🔧 Вертлюг эксплуатационный №108 (Паспорт и руководство)
-    </a>
+        <!-- Паспорта -->
+        <div id="pasporta" class="content-section">
+            <h2 class="section-title">🔧 Паспорта оборудования</h2>
+            <ul class="doc-list">
+                <li class="doc-item">
+                    <a href="vertlyug-ekspluatacionnyj.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">🔧</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Вертлюг эксплуатационный ВЭ-80Р1</div>
+                            <div class="doc-desc">Заводской №108. Руководство по эксплуатации, паспорт, технические характеристики</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-    <a href="motbr-39-2026-instrukciya-rotor.pdf" class="doc-link" target="_blank">
-        📋 Инструкция по ОТ и ПБ — ротор (МОТБР 39-2026)
-    </a>
+        <!-- Чек-листы -->
+        <div id="checklist" class="content-section">
+            <h2 class="section-title">✅ Чек-листы и оценка рисков</h2>
+            <ul class="doc-list">
+                <li class="doc-item">
+                    <a href="Dopolnenie%20k%20chek-listu%20PK.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">✅</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Дополнение к чек-листу пусковой комиссии</div>
+                            <div class="doc-desc">Контрольные параметры и проверки</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+                <li class="doc-item">
+                    <a href="Tipovye%20riski%20pri%20rabotah%20s%20VBT.pdf" class="doc-link" target="_blank">
+                        <span class="doc-icon">⚠️</span>
+                        <div class="doc-info">
+                            <div class="doc-name">Типовые риски при работах с ВБТ</div>
+                            <div class="doc-desc">Идентификация и оценка профессиональных рисков</div>
+                        </div>
+                        <span class="doc-badge">PDF</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 HSE-888pro | Оборудование и документация</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                <a href="https://github.com/HSE-888pro/Equipment-docs" style="color: white; text-decoration: underline;">
+                    Репозиторий на GitHub
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Скрываем все секции
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Убираем активный класс со всех кнопок
+            document.querySelectorAll('.menu-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Показываем нужную секцию
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Добавляем активный класс нажатой кнопке
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
