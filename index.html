@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* Шапка */
         .header {
             background: white;
             padding: 30px;
@@ -44,7 +43,6 @@
             font-size: 1.1em;
         }
 
-        /* Поиск */
         .search-box {
             background: white;
             padding: 20px;
@@ -67,7 +65,6 @@
             border-color: #667eea;
         }
 
-        /* Навигация */
         .nav-menu {
             background: white;
             border-radius: 15px;
@@ -118,7 +115,6 @@
             border-color: #667eea;
         }
 
-        /* Статистика */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -145,7 +141,6 @@
             margin-top: 5px;
         }
 
-        /* Контент */
         .content-section {
             display: none;
             background: white;
@@ -172,7 +167,6 @@
             border-bottom: 3px solid #667eea;
         }
 
-        /* Документы */
         .doc-list {
             list-style: none;
         }
@@ -245,7 +239,6 @@
             background: #dc3545;
         }
 
-        /* Кнопка наверх */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -275,7 +268,6 @@
             transform: translateY(-3px);
         }
 
-        /* Футер */
         .footer {
             text-align: center;
             color: white;
@@ -283,32 +275,6 @@
             padding: 20px;
         }
 
-        /* Быстрые действия */
-        .quick-actions {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            padding: 10px 20px;
-            background: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .action-btn:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Адаптивность */
         @media (max-width: 768px) {
             .menu-items {
                 flex-direction: column;
@@ -331,18 +297,15 @@
 </head>
 <body>
     <div class="container">
-        <!-- Заголовок -->
         <div class="header">
-            <h1>📚 Документация по оборудованию</h1>
-            <p>Паспорта, инструкции и руководства по эксплуатации</p>
+            <h1>📚 Документация</h1>
+            <p>Паспорта и инструкции для оборудования</p>
         </div>
 
-        <!-- Поиск -->
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 Поиск документов..." onkeyup="searchDocs()">
         </div>
 
-        <!-- Статистика -->
         <div class="stats">
             <div class="stat-card">
                 <div class="stat-number">4</div>
@@ -354,48 +317,39 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">2026</div>
-                <div class="stat-label">Год обновления</div>
+                <div class="stat-label">Год</div>
             </div>
         </div>
 
-        <!-- Навигация -->
         <div class="nav-menu">
-            <div class="menu-title">📋 Категории документов</div>
+            <div class="menu-title">📋 Категории</div>
             <div class="menu-items">
                 <button class="menu-btn active" onclick="showSection('all')">
-                    📄 Все документы
+                    📄 Все
                 </button>
                 <button class="menu-btn" onclick="showSection('instrukcii')">
-                    ️ Инструкции по ОТ и ПБ
+                    ⚙️ Инструкции
                 </button>
                 <button class="menu-btn" onclick="showSection('pasporta')">
-                    🔧 Паспорта оборудования
+                    🔧 Паспорта
                 </button>
                 <button class="menu-btn" onclick="showSection('checklist')">
-                    ✅ Чек-листы и риски
+                    ✅ Чек-листы
                 </button>
             </div>
         </div>
 
-        <!-- Быстрые действия -->
-        <div class="quick-actions">
-            <button class="action-btn" onclick="downloadAll()">📥 Скачать все</button>
-            <button class="action-btn" onclick="window.print()">🖨️ Печать</button>
-            <button class="action-btn" onclick="copyLink()">🔗 Скопировать ссылку</button>
-        </div>
-
-        <!-- Все документы -->
         <div id="all" class="content-section active">
             <h2 class="section-title">📄 Все документы</h2>
             <ul class="doc-list">
                 <li class="doc-item" data-category="instrukcii">
                     <a href="otbr-39-2026-instrukciya-rotor.pdf" class="doc-link" target="_blank">
-                        <span class="doc-icon"></span>
+                        <span class="doc-icon">📜</span>
                         <div class="doc-info">
                             <div class="doc-name">Инструкция по ОТ и ПБ — ротор</div>
                             <div class="doc-desc">ИОТВР 39-2026: Эксплуатация и монтаж гидравлического/механического ротора</div>
                             <div class="doc-meta">
-                                <span>📅 2026</span>
+                                <span> 2026</span>
                                 <span>📄 PDF</span>
                             </div>
                         </div>
@@ -424,7 +378,7 @@
                             <div class="doc-name">Дополнение к чек-листу ПК</div>
                             <div class="doc-desc">Проверка параметров при пусконаладке</div>
                             <div class="doc-meta">
-                                <span>📅 2026</span>
+                                <span> 2026</span>
                                 <span>📄 PDF</span>
                             </div>
                         </div>
@@ -433,13 +387,13 @@
                 </li>
                 <li class="doc-item" data-category="checklist">
                     <a href="Tipovye%20riski%20pri%20rabotah%20s%20VBT.pdf" class="doc-link" target="_blank">
-                        <span class="doc-icon">⚠️</span>
+                        <span class="doc-icon">️</span>
                         <div class="doc-info">
                             <div class="doc-name">Типовые риски при работах с ВБТ</div>
                             <div class="doc-desc">Справочник по технике безопасности</div>
                             <div class="doc-meta">
                                 <span>📅 2026</span>
-                                <span> PDF</span>
+                                <span>📄 PDF</span>
                             </div>
                         </div>
                         <span class="doc-badge">PDF</span>
@@ -448,16 +402,15 @@
             </ul>
         </div>
 
-        <!-- Инструкции -->
         <div id="instrukcii" class="content-section">
-            <h2 class="section-title">⚙️ Инструкции по охране труда и промышленной безопасности</h2>
+            <h2 class="section-title">️ Инструкции</h2>
             <ul class="doc-list">
                 <li class="doc-item">
                     <a href="otbr-39-2026-instrukciya-rotor.pdf" class="doc-link" target="_blank">
                         <span class="doc-icon">📜</span>
                         <div class="doc-info">
                             <div class="doc-name">Инструкция ИОТВР 39-2026</div>
-                            <div class="doc-desc">По эксплуатации и монтажу гидравлического, механического ротора при бурении, фрезеровании и цементировании скважин</div>
+                            <div class="doc-desc">По эксплуатации и монтажу гидравлического, механического ротора</div>
                             <div class="doc-meta">
                                 <span>📅 2026</span>
                                 <span>📄 PDF</span>
@@ -469,19 +422,18 @@
             </ul>
         </div>
 
-        <!-- Паспорта -->
         <div id="pasporta" class="content-section">
-            <h2 class="section-title"> Паспорта оборудования</h2>
+            <h2 class="section-title">🔧 Паспорта</h2>
             <ul class="doc-list">
                 <li class="doc-item">
                     <a href="vertlyug-ekspluatacionnyj.pdf" class="doc-link" target="_blank">
-                        <span class="doc-icon">🔧</span>
+                        <span class="doc-icon"></span>
                         <div class="doc-info">
                             <div class="doc-name">Вертлюг эксплуатационный ВЭ-80Р1</div>
-                            <div class="doc-desc">Заводской №108. Руководство по эксплуатации, паспорт, технические характеристики</div>
+                            <div class="doc-desc">Заводской №108. Руководство по эксплуатации, паспорт</div>
                             <div class="doc-meta">
                                 <span>📅 2016</span>
-                                <span> №108</span>
+                                <span>🔢 №108</span>
                             </div>
                         </div>
                         <span class="doc-badge">PDF</span>
@@ -490,15 +442,14 @@
             </ul>
         </div>
 
-        <!-- Чек-листы -->
         <div id="checklist" class="content-section">
-            <h2 class="section-title">✅ Чек-листы и оценка рисков</h2>
+            <h2 class="section-title">✅ Чек-листы</h2>
             <ul class="doc-list">
                 <li class="doc-item">
                     <a href="Dopolnenie%20k%20chek-listu%20PK.pdf" class="doc-link" target="_blank">
                         <span class="doc-icon">✅</span>
                         <div class="doc-info">
-                            <div class="doc-name">Дополнение к чек-листу пусковой комиссии</div>
+                            <div class="doc-name">Дополнение к чек-листу ПК</div>
                             <div class="doc-desc">Контрольные параметры и проверки</div>
                             <div class="doc-meta">
                                 <span>📅 2026</span>
@@ -523,20 +474,14 @@
             </ul>
         </div>
 
-        <!-- Футер -->
         <div class="footer">
-            <p>© 2026 | Оборудование и документация</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">
-                Последнее обновление: <span id="lastUpdate"></span>
-            </p>
+            <p>© 2026</p>
         </div>
     </div>
 
-    <!-- Кнопка наверх -->
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // Показать секцию
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
@@ -550,7 +495,6 @@
             event.target.classList.add('active');
         }
 
-        // Поиск документов
         function searchDocs() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toLowerCase();
@@ -562,23 +506,6 @@
             });
         }
 
-        // Скачать все
-        function downloadAll() {
-            const links = document.querySelectorAll('.doc-link');
-            links.forEach((link, index) => {
-                setTimeout(() => {
-                    window.open(link.href, '_blank');
-                }, index * 500);
-            });
-        }
-
-        // Копировать ссылку
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href);
-            alert('✅ Ссылка скопирована в буфер обмена!');
-        }
-
-        // Кнопка наверх
         window.onscroll = function() {
             const btn = document.getElementById('backToTop');
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -591,9 +518,6 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Дата последнего обновления
-        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('ru-RU');
     </script>
 </body>
 </html>
